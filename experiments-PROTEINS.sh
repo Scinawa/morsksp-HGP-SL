@@ -34,6 +34,13 @@ for i in $(seq $count); do
         # Model0 - MO with PR=0.2
         python3 extended-main.py --a 3 --b $B  --correlation ${correlation} --multi_orbits TRUE --dataset $DATASET --pooling_ratio 0.2 --read_dataset  --seed $i >> RESULTS-$DATASET/$DATASET-M0-PR02-MO-k${correlation}.txt
 
+
+        # Original Model0 with and without PR
+        python3 main.py --a 3 --b $B  --seed $i --correlation ${correlation} --dataset $DATASET >> RESULTS-$DATASET/$DATASET-M0-PR05-original.txt
+        python3 main.py --a 3 --b $B  --seed $i --correlation ${correlation} --dataset $DATASET --pooling_ratio 0.2 >> RESULTS-$DATASET/$DATASET-M0-PR02-original.txt
+        
+        
+
         # ###### MODEL 1
         # # Model1 - SO
         # python3 extended-main.py --a 3 --b $B  --correlation ${correlation} --dataset $DATASET --model 1 --read_dataset  --seed $i >> RESULTS-$DATASET/$DATASET-M1-SO-k${correlation}.txt
@@ -47,14 +54,7 @@ for i in $(seq $count); do
         # # Model1 - MO with PR
         # python3 extended-main.py --a 3 --b $B  --correlation ${correlation} --multi_orbits TRUE --dataset $DATASET --model 1 --pooling_ratio 0.2 --read_dataset  --seed $i >> RESULTS-$DATASET/$DATASET-M1-PR-MO-k${correlation}.txt
 
-
-        # Original Model0 and Model1 with and without PR
-        python3 main.py --a 3 --b $B  --seed $i --correlation ${correlation} --dataset $DATASET >> RESULTS-$DATASET/$DATASET-M0-PR05-original.txt
-        python3 main.py --a 3 --b $B  --seed $i --correlation ${correlation} --dataset $DATASET --pooling_ratio 0.2 >> RESULTS-$DATASET/$DATASET-M0-PR02-original.txt
-        
-        
-        
-        
+        # Original Model1 with and without PR
         #python3 main.py --a 3 --b $B  --seed $i --correlation ${correlation} --dataset $DATASET --model 1 >> RESULTS-$DATASET/$DATASET-M1-original.txt
         #python3 main.py --a 3 --b $B  --seed $i --correlation ${correlation} --dataset $DATASET --model 1 --pooling_ratio 0.2 >> RESULTS-$DATASET/$DATASET-M1-PR-original.txt
 
